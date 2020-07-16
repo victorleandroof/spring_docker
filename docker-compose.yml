@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  product-app:
+    image: victorsleandro/product-app
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+    networks:
+      - product-network
+  admin-app:
+    image: victorsleandro/admin-app
+    ports:
+      - "8091:8091"
+    links:
+      - product-app
+    networks:
+      - product-network
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 9081:9081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: root@dev
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root@dev
+    links:
+      - mongo
+    networks:
+      - product-network
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root@dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - product-network
+
+networks:
+  product-network:
+    driver: bridge
