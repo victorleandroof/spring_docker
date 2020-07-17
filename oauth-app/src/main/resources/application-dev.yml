@@ -1,0 +1,26 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8080
+spring:
+  application:
+    name: oauth-service
+  boot:
+    admin:
+      client:
+        password: admin
+        url: http://localhost:8091/
+        username: admin
+  data:
+    mongodb:
+      uri: mongodb://root:root_dev@localhost:27017/users?retryWrites=false
+security:
+  oauth2:
+    resource:
+      id: bcrypt

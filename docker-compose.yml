@@ -26,7 +26,7 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: root@dev
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root@dev
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root_dev
     links:
       - mongo
     networks:
@@ -36,7 +36,7 @@ services:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root@dev
+      MONGO_INITDB_ROOT_PASSWORD: root_dev
     ports:
       - "27017:27017"
     volumes:
