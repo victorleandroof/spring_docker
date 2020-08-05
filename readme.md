@@ -1,4 +1,3 @@
-ANHEUSER-BUSCH INBEV: CODE CHALLENGE
 ---
 Prerequisite
 ---
